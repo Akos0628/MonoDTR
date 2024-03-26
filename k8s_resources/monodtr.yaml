@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: monodtr
+  namespace: default
+  labels:
+    app: monodtr
+spec:
+  restartPolicy: OnFailure
+  containers:
+  - name: monodtr
+    image: docker.io/balazsfodor/monodtr:v1
+    # volumeMounts:
+    # - name: object-detection-volume
+    #   mountPath: /app/feed
+    commands: ['sleep', 'infinity']
+    resources:
+      limits:
+        nvidia.com/gpu: 1
+        cpu: 8
+    env:
+    - name: NVIDIA_VISIBLE_DEVICES
+      value: all
+    - name: NVIDIA_DRIVER_CAPABILITIES
+      value: all
+    # ports:
+    # - containerPort: 5000
+  volumes:
+  - name: object-detection-volume
+    persistentVolumeClaim:
+      claimName: object-detection-volume-claim

@@ -28,6 +28,8 @@ RUN pip3 install torch_scatter==2.0.9 -f https://data.pyg.org/whl/torch-${TORCH_
 WORKDIR /app
 RUN git clone https://github.com/Akos0628/MonoDTR.git
 WORKDIR /app/MonoDTR
+RUN git checkout fodorb
+RUN git pull
 RUN pip3 install -r requirement.txt
 
 # sleep infinity
