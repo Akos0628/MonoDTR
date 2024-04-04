@@ -1,10 +1,10 @@
 .idea/
 .vscode/
 
-data/
-workdirs/
-checkpoint/
+/data/
+/workdirs/
+/checkpoint/
 **/__pycache__/
 
-visualDet3D/networks/lib/ops/dcn/*.so
-visualDet3D/networks/lib/ops/iou3d/*.so
+/visualDet3D/networks/lib/ops/dcn/*.so
+/visualDet3D/networks/lib/ops/iou3d/*.so
