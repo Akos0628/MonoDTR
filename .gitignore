@@ -1,7 +1,9 @@
 .idea/
 .vscode/
 
-/data/
+/data/KITTI
+/data/custom/vehicle*/
+/data/custom/merged/
 /workdirs/
 /checkpoint/
 **/__pycache__/
