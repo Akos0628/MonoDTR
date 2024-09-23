@@ -2,13 +2,13 @@ import numpy as np
 train_lines = []
 val_lines   = []
 
-train_file  = 'train.txt'
-val_file    = 'val.txt'
+train_file  = './train.txt'
+val_file    = './val.txt'
 total_data_num = 7481
 
 for i in range(total_data_num):
     i_string = "%06d\n" % i
-    if np.random.rand() < 0.99:
+    if np.random.rand() < 0.40:
         train_lines.append(i_string)
     else:
         val_lines.append(i_string)

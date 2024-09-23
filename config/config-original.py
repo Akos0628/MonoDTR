@@ -22,10 +22,8 @@ cfg.trainer = trainer
 
 ## path
 path = edict()
-path.data_path = "./data/custom/merged/training" # used in visualDet3D/data/.../dataset
-path.test_path = "./data/custom/merged/testing" # used in visualDet3D/data/.../dataset
-#path.data_path = "./data/KITTI/object/training" # used in visualDet3D/data/.../dataset
-#path.test_path = "./data/KITTI/object/testing" # used in visualDet3D/data/.../dataset
+path.data_path = "./data/KITTI/object/training" # used in visualDet3D/data/.../dataset
+path.test_path = "./data/KITTI/object/testing" # used in visualDet3D/data/.../dataset
 path.visualDet3D_path = "./visualDet3D" # The path should point to the inner subfolder
 path.project_path = "./workdirs" # or other path for pickle files, checkpoints, tensorboard logging and output files.
 if not os.path.isdir(path.project_path):
@@ -42,7 +40,7 @@ path.checkpoint_path = os.path.join(path.project_path, "checkpoint")
 if not os.path.isdir(path.checkpoint_path):
     os.mkdir(path.checkpoint_path)
 
-path.pretrained_checkpoint = os.path.join(path.checkpoint_path, "MonoDTR.pth")
+#path.pretrained_checkpoint = os.path.join(path.checkpoint_path, "MonoDTR.pth")
 
 path.preprocessed_path = os.path.join(path.project_path, "output")
 if not os.path.isdir(path.preprocessed_path):
@@ -81,15 +79,13 @@ cfg.scheduler = scheduler
 ## data
 data = edict(
     batch_size = 4,
-    num_workers = 12,
+    num_workers = 16,
     rgb_shape = (288, 1280, 3),
     train_dataset = "KittiMonoDataset",
     val_dataset   = "KittiMonoDataset",
     test_dataset  = "KittiMonoTestDataset",
-    train_split_file = "./data/sequential/train.txt",
-    val_split_file   = "./data/sequential/val.txt",
-    #train_split_file = "./data/tester/train.txt",
-    #val_split_file   = "./data/tester/test.txt",
+    train_split_file = os.path.join(cfg.path.visualDet3D_path, 'data', 'kitti', 'chen_split', 'train.txt'),
+    val_split_file   = os.path.join(cfg.path.visualDet3D_path, 'data', 'kitti', 'chen_split', 'val.txt'),
 )
 
 data.augmentation = edict(

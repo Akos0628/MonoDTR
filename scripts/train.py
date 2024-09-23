@@ -83,11 +83,13 @@ def main(config="config/config.py", experiment_name="default", world_size=1, loc
     ## Create the model
     detector = DETECTOR_DICT[cfg.detector.name](cfg.detector)
 
-    ## Load old model if needed
-    old_checkpoint = getattr(cfg.path, 'pretrained_checkpoint', None)
-    if old_checkpoint is not None:
-        state_dict = torch.load(old_checkpoint, map_location='cpu')
-        detector.load_state_dict(state_dict)
+    # Load old model for transfer learning if needed 
+    old_checkpoint = getattr(cfg.path, 'pretrained_checkpoint', None) 
+    if old_checkpoint is not None: 
+        state_dict = torch.load(old_checkpoint, map_location='cpu') 
+        detector.load_state_dict(state_dict) 
+
+        #detector.set_transfer()
 
     ## Convert to cuda
     if is_distributed:

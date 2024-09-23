@@ -87,3 +87,17 @@ class MonoDTR(nn.Module):
             return self.train_forward(*inputs)
         else:
             return self.test_forward(*inputs)
+    
+    def set_transfer(self):
+        # Freeze all layers 
+        for param in self.parameters():
+            param.requires_grad = False
+
+        # Unfreeze last layer 
+        for param in self.bbox_head.parameters(): 
+            param.requires_grad = True
+    
+    def unset_transfer(self):
+        # Unfreeze all layers 
+        for param in self.parameters(): 
+            param.requires_grad = True

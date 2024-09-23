@@ -4,6 +4,7 @@
 /data/KITTI
 /data/custom/vehicle*/
 /data/custom/merged/
+/data/custom/merged2/
 /workdirs/
 /checkpoint/
 **/__pycache__/
